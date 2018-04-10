@@ -17,4 +17,12 @@
         <constructor-arg ref="eventLogger"/>
     </bean>
 
+    <bean id="event" class="spring.core.beans.Event" scope="prototype">
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+        </constructor-arg>
+        <constructor-arg>
+            <bean class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
+        </constructor-arg>
+    </bean>
 </beans>
