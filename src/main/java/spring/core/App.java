@@ -1,6 +1,7 @@
 package spring.core;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import spring.core.beans.Client;
 import spring.core.beans.Event;
@@ -17,10 +18,21 @@ public class App {
     }
 
     public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("config.xml");
+        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("config.xml");
+        ctx.registerShutdownHook();
+
         App app = (App) ctx.getBean("app");
+
         Event event = (Event) ctx.getBean("event");
         event.setMsg("Some event for user 1");
+        app.logEvent(event);
+
+        event = (Event) ctx.getBean("event");
+        event.setMsg("Some event for user 2");
+        app.logEvent(event);
+
+        event = (Event) ctx.getBean("event");
+        event.setMsg("Some event for user 3");
         app.logEvent(event);
     }
 
