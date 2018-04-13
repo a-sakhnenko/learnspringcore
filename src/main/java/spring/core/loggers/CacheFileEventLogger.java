@@ -1,9 +1,12 @@
 package spring.core.loggers;
 
+import org.springframework.stereotype.Component;
 import spring.core.beans.Event;
 
+import javax.annotation.PreDestroy;
 import java.util.List;
 
+@Component
 public class CacheFileEventLogger extends FileEventLogger {
     private int cacheSize;
     private List<Event> cache;
@@ -24,6 +27,7 @@ public class CacheFileEventLogger extends FileEventLogger {
         }
     }
 
+    @PreDestroy
     public void destroy() {
         if (!cache.isEmpty()) {
             writeEventsFromCache();

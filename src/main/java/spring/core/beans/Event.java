@@ -1,12 +1,15 @@
 package spring.core.beans;
 
+import org.springframework.stereotype.Component;
+
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Random;
 
+@Component
 public class Event {
-    private int id;
     private String msg;
+    private int id;
     private Date date;
     private DateFormat df;
 

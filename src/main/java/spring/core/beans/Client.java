@@ -1,8 +1,15 @@
 package spring.core.beans;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Client {
+    @Value("${id}")
     private String id;
+    @Value("${name}")
     private String name;
+    @Value("${greeting}")
     private String greeting;
 
     public String getId() {
@@ -20,5 +27,9 @@ public class Client {
 
     public void setGreeting(String greeting) {
         this.greeting = greeting;
+    }
+
+    public String getGreeting() {
+        return greeting;
     }
 }
